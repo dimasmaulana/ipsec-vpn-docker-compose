@@ -1,0 +1,12 @@
+services:
+        app:
+          restart: always
+          env_file: .env
+          image: hwdsl2/ipsec-vpn-server
+          ports:
+            - 500:500/udp
+            - 4500:4500/udp
+          volumes:
+            - /lib/modules:/lib/modules:ro
+            - ./ikev2-vpn-data:/etc/ipsec.d
+          privileged: true
